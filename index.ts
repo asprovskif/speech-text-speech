@@ -29,6 +29,8 @@ const model = async (prompt) => {
         let files = fs.readdirSync(path.join(__dirname, 'uploads'));
         const lastFile = files[files.length - 1];
 
+        tokens += textToSpeak;
+
         gtts.save(path.join(__dirname, 'uploads', lastFile.replace(".mp3", "-gen.mp3")), function (err, result) {
             if (err) { throw new Error(err); }
             console.log("Text to speech converted!");
